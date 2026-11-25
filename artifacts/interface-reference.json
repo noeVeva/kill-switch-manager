@@ -1,0 +1,211 @@
+{
+  "commands": {
+    "help [command]": "Built-in cmd help and command list. help run explains module workflow.",
+    "show [modules|challenges|options|roster|teams|queue|settings]": "Default modules; teams equals status. Challenges list IDs, proposed points, occupancy, enable state and prerequisites.",
+    "modules": "Alias for show modules.",
+    "challenges": "Alias for show challenges.",
+    "use <module>": "Select a module; initializes its option defaults. Selecting again resets options.",
+    "set <option> <value>": "Set current module option; quote multiword values or paths. Use empty quotes to clear an optional string. Types/ranges/enums checked immediately.",
+    "run": "Validate required options, execute selected module and auto-save successful mutations. Empty/extra arguments rejected. A printed Error leaves state unchanged.",
+    "back": "Leave module context and clear its options.",
+    "status": "Show event status (same as event/status).",
+    "leaderboard": "Show scores (same as event/leaderboard).",
+    "eligible <team>": "Show eligible missions and occupancy; eligibility excludes already-active/finished teams, availability additionally depends on capacity.",
+    "audit [count]": "Show last count audit entries (default 20; 1..20000).",
+    "save": "Explicit atomic save; all successful mutations already auto-save. Updates one-generation .bak.",
+    "reload": "Validate and reload disk state. On failure retain current in-memory state and leave disk untouched.",
+    "reset RESET": "Explicit destructive reset; same as event/reset confirm RESET. Catalog/resources retained, settings reset to random/2041/min_main=min(3, reachable enabled mains).",
+    "exit | quit | EOF": "Leave console. State already auto-saved. No extra exit write, so .bak survives exit.",
+    "empty line": "No-op (does not repeat last mutation)."
+  },
+  "modules": {
+    "roster/add": {
+      "description": "Organizer adds one player (unique case-sensitive ID).",
+      "options": {
+        "id": {
+          "default": "",
+          "type": "string",
+          "required": true,
+          "description": "ASCII ID, 1–40 letters/digits/_/-; first character alphanumeric."
+        },
+        "name": {
+          "default": "",
+          "type": "string",
+          "required": true,
+          "description": "Printable Unicode name up to 160 characters; quote multiword names."
+        }
+      }
+    },
+    "roster/import": {
+      "description": "Atomically import UTF-8 CSV with exact id,name header; organizer only.",
+      "options": {
+        "path": {
+          "default": "",
+          "type": "path",
+          "required": true,
+          "description": "CSV path; up to 1 MiB and 2000 total players."
+        }
+      }
+    },
+    "teams/create": {
+      "description": "Organizer forms random balanced teams or explicit controlled mapping. Formation is separate from mission assignment mode.",
+      "options": {
+        "size": {
+          "default": 3,
+          "type": "int",
+          "required": false,
+          "min": 1,
+          "max": 2000,
+          "description": "Random formation maximum team size; ceil(players/size) balanced teams. Ignored for controlled mapping."
+        },
+        "seed": {
+          "default": 2041,
+          "type": "int",
+          "required": false,
+          "min": 0,
+          "max": 9223372036854775807,
+          "description": "Random team formation seed; independent of event assignment seed."
+        },
+        "formation": {
+          "default": "random",
+          "type": "enum",
+          "required": false,
+          "allowed": [
+            "random",
+            "controlled"
+          ],
+          "description": "Random is normal rule; controlled is explicit organizer override, never player self-selection."
+        },
+        "mapping": {
+          "default": "",
+          "type": "string",
+          "required": false,
+          "description": "Controlled only: T001=P01,P02;T002=P03,P04. All players exactly once. Quote whole value."
+        },
+        "confirm": {
+          "default": "",
+          "type": "enum",
+          "required": false,
+          "allowed": [
+            "",
+            "REGENERATE"
+          ],
+          "description": "REGENERATE required if activity exists; deletes ALL teams' scores, completions, active assignments and queue. Roster/settings retained."
+        }
+      }
+    },
+    "missions/assign": {
+      "description": "Assign common warehouse first, then eligible free branches; random branches differ while occupied at capacity 1. Enqueue if blocked.",
+      "options": {
+        "team": {
+          "default": "all",
+          "type": "string",
+          "required": false,
+          "description": "Team ID or all; stable sorted team order."
+        },
+        "mission": {
+          "default": "",
+          "type": "string",
+          "required": false,
+          "description": "Empty for automatic choice; explicit mission ID only in controlled mode for one team. Cannot bypass prerequisites/capacity."
+        }
+      }
+    },
+    "progress/complete": {
+      "description": "Organizer verifies and records current mission completion, releases capacity and awards proposed default points.",
+      "options": {
+        "team": {
+          "default": "",
+          "type": "string",
+          "required": true,
+          "description": "One team ID."
+        },
+        "mission": {
+          "default": "",
+          "type": "string",
+          "required": false,
+          "description": "Optional guard: must equal team's active mission. Empty uses active mission."
+        }
+      }
+    },
+    "queue/dispatch": {
+      "description": "Retry waiting teams in FIFO order; skip blocked requests. Does not auto-enqueue idle teams.",
+      "options": {}
+    },
+    "event/config": {
+      "description": "Change one scheduling setting; existing active allocations remain intact.",
+      "options": {
+        "option": {
+          "default": "assignment_mode",
+          "type": "enum",
+          "required": false,
+          "allowed": [
+            "assignment_mode",
+            "seed",
+            "min_main"
+          ],
+          "description": "Scheduling option to change."
+        },
+        "value": {
+          "default": "random",
+          "type": "string",
+          "required": true,
+          "description": "assignment_mode: random|controlled; seed: integer 0..2^63-1 (resets draw); min_main: 1..enabled reachable main mission count (default 3). Changing threshold may be rejected if existing finale activity would become premature."
+        }
+      }
+    },
+    "resources/config": {
+      "description": "Configure capacity or enable state without invalidating active or explicitly queued allocations.",
+      "options": {
+        "mission": {
+          "default": "",
+          "type": "string",
+          "required": true,
+          "description": "Mission ID."
+        },
+        "capacity": {
+          "default": "",
+          "type": "optional-int",
+          "required": false,
+          "min": 1,
+          "max": 2000,
+          "description": "Empty means unchanged; cannot be below active count."
+        },
+        "enabled": {
+          "default": "",
+          "type": "enum",
+          "required": false,
+          "allowed": [
+            "",
+            "true",
+            "false"
+          ],
+          "description": "Empty unchanged; intro/finale cannot be disabled; reject disabling active/explicitly queued mission or making finale unreachable."
+        }
+      }
+    },
+    "event/status": {
+      "description": "Show roster/team progression, scores and waiting teams.",
+      "options": {}
+    },
+    "event/leaderboard": {
+      "description": "Show descending total points, team ID breaks ties (not speed).",
+      "options": {}
+    },
+    "event/reset": {
+      "description": "Erase event activity/roster/settings; retain current catalog/resource defaults. Previous state goes to .bak until next write.",
+      "options": {
+        "confirm": {
+          "default": "",
+          "type": "enum",
+          "required": true,
+          "allowed": [
+            "",
+            "RESET"
+          ],
+          "description": "Exact RESET confirmation required."
+        }
+      }
+    }
+  }
+}

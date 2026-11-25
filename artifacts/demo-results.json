@@ -1,0 +1,16 @@
+[
+  {
+    "demo": "walkthrough",
+    "returncode": 0,
+    "commands": "examples/walkthrough.txt",
+    "transcript": "artifacts/walkthrough-transcript.txt",
+    "state": "artifacts/walkthrough-state.json"
+  },
+  {
+    "demo": "full-event",
+    "returncode": 0,
+    "commands": "examples/full-event.txt",
+    "transcript": "artifacts/full-event-transcript.txt",
+    "state": "artifacts/full-event-state.json"
+  }
+]

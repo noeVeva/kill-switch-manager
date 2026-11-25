@@ -1,0 +1,2 @@
+DEMO_OK walkthrough: 4 teams; scores={'T001': 400, 'T002': 100, 'T003': 100, 'T004': 100}
+DEMO_OK full-event: 2 teams; scores={'T001': 1200, 'T002': 300}

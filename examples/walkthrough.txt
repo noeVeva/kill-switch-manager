@@ -1,0 +1,47 @@
+show modules
+use roster/import
+set path examples/roster.csv
+run
+use teams/create
+set size 3
+set seed 42
+show options
+run
+use missions/assign
+run
+status
+use progress/complete
+set team T001
+set mission warehouse
+run
+set team T002
+run
+set team T003
+run
+set team T004
+run
+use missions/assign
+run
+status
+use event/config
+set option assignment_mode
+set value controlled
+run
+use progress/complete
+set team T001
+run
+use resources/config
+set mission quadruped
+set capacity 4
+run
+use missions/assign
+set team T001
+set mission quadruped
+run
+status
+leaderboard
+show settings
+save
+reload
+back
+exit

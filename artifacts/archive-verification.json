@@ -1,0 +1,12 @@
+{
+  "verified_archive": "/home/novix/workspace/writing_space/kill-switch-manager.zip",
+  "verification_scope": "Initial runtime package was inspected, bounded-extracted and executed from an independent directory. Subsequent package refresh adds this evidence and documentation; runtime code remains the tested source.",
+  "archive_at_verification": {"compressed_bytes": 49572, "expanded_bytes":159314,"members":21,"crc_test":"passed"},
+  "commands": [
+    "python3 -m novix_agent.tools.data_io inspect-zip /home/novix/workspace/writing_space/kill-switch-manager.zip --max-bytes 4194304",
+    "python3 -m novix_agent.tools.data_io extract-zip /home/novix/workspace/writing_space/kill-switch-manager.zip --member 'kill-switch-manager/*' --output /home/novix/workspace/project/package-verification --max-bytes 4194304",
+    "sh /home/novix/workspace/project/package-verification/kill-switch-manager/entrypoint.sh"
+  ],
+  "result": {"tests_run":30,"failures":0,"test_seconds":3.972,"walkthrough_scores":{"T001":400,"T002":100,"T003":100,"T004":100},"full_event_scores":{"T001":1200,"T002":300},"starter":"empty, validated","returncode":0},
+  "independent_test_output": "/home/novix/workspace/project/package-verification/kill-switch-manager/artifacts/test-output.txt"
+}

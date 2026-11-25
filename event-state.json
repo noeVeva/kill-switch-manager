@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "catalog": {
+    "schema_version": 1,
+    "event": "Kill Switch CTF",
+    "author": "Wassim Oukoudda",
+    "organizers": "StyxSec × Oblivion",
+    "story": "2041: ORACLE controls a fictional city's machines. The resistance follows isolated missions toward the final Maze kill switch.",
+    "scope": "Presentation catalog only. All missions are fictional isolated simulations or offline datasets. This organizer does not provision labs, scan networks, build exploits or control devices. Difficulty, points, capacity and prerequisites are proposed organizer defaults, not facts from the brief.",
+    "missions": [
+      {
+        "id": "warehouse",
+        "title": "Warehouse / Logistics Bots",
+        "kind": "intro",
+        "goal": "Recover the fictional fleet's dispatch manifest by reviewing a mock dashboard and an offline application trace.",
+        "skills": [
+          "web review",
+          "log analysis",
+          "logistics"
+        ],
+        "difficulty": "introductory",
+        "points": 100,
+        "capacity": 2000,
+        "prerequisites": [],
+        "enabled": true
+      },
+      {
+        "id": "quadruped",
+        "title": "Quadruped Patrol Dogs",
+        "kind": "main",
+        "goal": "Interpret a supplied toy firmware image and prerecorded debug dump to recover a fictional maintenance clue.",
+        "skills": [
+          "firmware analysis",
+          "offline reversing"
+        ],
+        "difficulty": "intermediate",
+        "points": 200,
+        "capacity": 1,
+        "prerequisites": [
+          "warehouse"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "humanoid",
+        "title": "Humanoid Soldiers",
+        "kind": "main",
+        "goal": "Reconstruct the intended movement sequence from a mock motion API transcript and captured simulation messages.",
+        "skills": [
+          "protocol reasoning",
+          "sequence analysis"
+        ],
+        "difficulty": "intermediate",
+        "points": 200,
+        "capacity": 1,
+        "prerequisites": [
+          "warehouse"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "drones",
+        "title": "Drones — Virtual UAV Swarm",
+        "kind": "main",
+        "goal": "Identify inconsistent synthetic telemetry and restore coordination in a fictional simulator scenario; no radio or real flight actions.",
+        "skills": [
+          "telemetry analysis",
+          "simulation logic"
+        ],
+        "difficulty": "intermediate",
+        "points": 200,
+        "capacity": 1,
+        "prerequisites": [
+          "warehouse"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "medical",
+        "title": "Medical / Surgical Robots",
+        "kind": "main",
+        "goal": "Protect entirely fabricated patient records and reason about a toy safety interlock in an isolated medical simulation.",
+        "skills": [
+          "data protection",
+          "safety reasoning"
+        ],
+        "difficulty": "intermediate",
+        "points": 200,
+        "capacity": 1,
+        "prerequisites": [
+          "warehouse"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "vehicle",
+        "title": "Autonomous Vehicles",
+        "kind": "main",
+        "goal": "Analyze an offline fictional CAN capture and supplied sensor traces to explain a simulated route discrepancy.",
+        "skills": [
+          "CAN capture analysis",
+          "sensor reasoning"
+        ],
+        "difficulty": "intermediate",
+        "points": 200,
+        "capacity": 1,
+        "prerequisites": [
+          "warehouse"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "industrial_arm",
+        "title": "Industrial Arms — Factory",
+        "kind": "main",
+        "goal": "Read a toy production-logic artifact and identify the safe intended sequence for a simulated robot arm.",
+        "skills": [
+          "logic analysis",
+          "simulation safety"
+        ],
+        "difficulty": "intermediate",
+        "points": 200,
+        "capacity": 1,
+        "prerequisites": [
+          "warehouse"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "elevator",
+        "title": "Elevator Tower",
+        "kind": "main",
+        "goal": "Solve progressively harder mock panel, prerecorded protocol, firmware-puzzle and door-logic clues to reach a fictional rooftop flag.",
+        "skills": [
+          "web review",
+          "offline protocol analysis",
+          "logic puzzles"
+        ],
+        "difficulty": "advanced",
+        "points": 300,
+        "capacity": 1,
+        "prerequisites": [
+          "warehouse"
+        ],
+        "enabled": true,
+        "note": "Separated from the ambiguous plant heading in the uploaded brief; this is its own tower mission."
+      },
+      {
+        "id": "plant",
+        "title": "Fictional Nuclear Plant — Safe Shutdown",
+        "kind": "main",
+        "goal": "Restore a safe abstract state in a made-up dashboard puzzle and select its fictional shutdown win condition. No real reactor design, control parameters, procedures or interfaces are supplied.",
+        "skills": [
+          "abstract state machines",
+          "safety invariants"
+        ],
+        "difficulty": "advanced",
+        "points": 300,
+        "capacity": 1,
+        "prerequisites": [
+          "warehouse"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "cctv",
+        "title": "ORACLE’s Eyes",
+        "kind": "main",
+        "goal": "Review generated camera frames, toy firmware clues and prerecorded stream artifacts to identify a fictional empty-corridor decoy.",
+        "skills": [
+          "frame forensics",
+          "metadata analysis",
+          "offline reversing"
+        ],
+        "difficulty": "intermediate",
+        "points": 200,
+        "capacity": 1,
+        "prerequisites": [
+          "warehouse"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "cpu_rings",
+        "title": "Descend to Ring 0 (and below)",
+        "kind": "main",
+        "goal": "Interpret isolated mock privilege-boundary and toy escape puzzles as a staged narrative; no working privilege escalation or escape payload is included.",
+        "skills": [
+          "privilege-boundary reasoning",
+          "toy artifact analysis"
+        ],
+        "difficulty": "advanced",
+        "points": 300,
+        "capacity": 1,
+        "prerequisites": [
+          "warehouse"
+        ],
+        "enabled": true,
+        "note": "Negative ring labels are narrative shorthand, not a universal CPU privilege architecture. No exploit lab is built by this package."
+      },
+      {
+        "id": "blind_spot",
+        "title": "The Blind Spot",
+        "kind": "main",
+        "goal": "Find a brief prerecorded docking interval and reassemble synthetic footage chunks from an offline sync trace.",
+        "skills": [
+          "timeline analysis",
+          "offline capture forensics"
+        ],
+        "difficulty": "intermediate",
+        "points": 200,
+        "capacity": 1,
+        "prerequisites": [
+          "warehouse"
+        ],
+        "enabled": true,
+        "note": "The robot is intermittently connected at a dock, not genuinely permanently air-gapped. Timing is represented by supplied artifacts, not live monitoring."
+      },
+      {
+        "id": "through_walls",
+        "title": "Through the Walls",
+        "kind": "main",
+        "goal": "Decode a fictional movement path from synthetic CSI/RSSI time-series artifacts. No live RF collection, people tracking or hardware interaction.",
+        "skills": [
+          "signal processing",
+          "synthetic data analysis"
+        ],
+        "difficulty": "advanced",
+        "points": 300,
+        "capacity": 1,
+        "prerequisites": [
+          "warehouse"
+        ],
+        "enabled": true
+      },
+      {
+        "id": "maze",
+        "title": "The Maze — Final Kill Switch",
+        "kind": "finale",
+        "goal": "Distinguish ORACLE's fictional core from shifting decoys in a supplied toy graph and select the narrative kill-switch endpoint; no live Kubernetes access, cluster takeover or container escape is implemented.",
+        "skills": [
+          "graph reasoning",
+          "artifact correlation",
+          "mock boundary analysis"
+        ],
+        "difficulty": "finale",
+        "points": 500,
+        "capacity": 1,
+        "prerequisites": [
+          "warehouse"
+        ],
+        "enabled": true,
+        "note": "Eligibility also requires the configured minimum number of completed main missions (default 3, excluding the warehouse)."
+      }
+    ]
+  },
+  "settings": {
+    "assignment_mode": "random",
+    "seed": 2041,
+    "draw": 0,
+    "min_main": 3
+  },
+  "roster": {},
+  "teams": {},
+  "waiting": [],
+  "audit": []
+}

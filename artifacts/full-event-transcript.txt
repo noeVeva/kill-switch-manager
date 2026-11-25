@@ -1,0 +1,156 @@
+ACTUAL COMMAND: /opt/venv/bin/python3 /mnt/novix-k8s-workspace-root/session_879c352ec3a50efbd630158414a227d2/workspace/project/kill-switch-manager/killswitch.py --state /tmp/killswitch-demo-r7uypo1p/full-event.json
+STDIN SOURCE: examples/full-event.txt
+EXIT CODE: 0
+
+State: /tmp/killswitch-demo-r7uypo1p/full-event.json
+
+Kill Switch CTF | by Wassim Oukoudda | StyxSec × Oblivion
+2041 / ORACLE — LOCAL ORGANIZER ONLY; no labs or offensive actions.
+Try: show modules, use roster/import, show options, help run.
+One organizer process per state file. Changes auto-save.
+
+killswitch > Using roster/add. Type show options, set <option> <value>, then run.
+killswitch (roster/add) > id => P01
+killswitch (roster/add) > name => Amina Haddad
+killswitch (roster/add) > Player added and saved.
+killswitch (roster/add) > id => P02
+killswitch (roster/add) > name => يوسف منصور
+killswitch (roster/add) > Player added and saved.
+killswitch (roster/add) > Using teams/create. Type show options, set <option> <value>, then run.
+killswitch (teams/create) > size => 1
+killswitch (teams/create) > seed => 42
+killswitch (teams/create) > Formed 2 teams by organizer (random); size range 1–1.
+killswitch (teams/create) > Using resources/config. Type show options, set <option> <value>, then run.
+killswitch (resources/config) > mission => warehouse
+killswitch (resources/config) > capacity => 1
+killswitch (resources/config) > warehouse: capacity=1; enabled=True. Run dispatch to retry waiting teams.
+killswitch (resources/config) > Using missions/assign. Type show options, set <option> <value>, then run.
+killswitch (missions/assign) > T001: assigned warehouse
+T002: waiting: no eligible free mission (capacity, enable status or prerequisites)
+killswitch (missions/assign) > [
+  {
+    "team": "T002",
+    "mission": null
+  }
+]
+killswitch (missions/assign) > Using progress/complete. Type show options, set <option> <value>, then run.
+killswitch (progress/complete) > team => T001
+killswitch (progress/complete) > T001: completed warehouse; +100 points; total=100. Capacity released. Use assign or dispatch; no automatic follow-up.
+killswitch (progress/complete) > Using queue/dispatch. Type show options, set <option> <value>, then run.
+killswitch (queue/dispatch) > T002: assigned warehouse
+killswitch (queue/dispatch) > Using progress/complete. Type show options, set <option> <value>, then run.
+killswitch (progress/complete) > team => T002
+killswitch (progress/complete) > T002: completed warehouse; +100 points; total=100. Capacity released. Use assign or dispatch; no automatic follow-up.
+killswitch (progress/complete) > Using event/config. Type show options, set <option> <value>, then run.
+killswitch (event/config) > option => assignment_mode
+killswitch (event/config) > value => controlled
+killswitch (event/config) > assignment_mode=controlled. Existing active allocations unchanged.
+killswitch (event/config) > Using missions/assign. Type show options, set <option> <value>, then run.
+killswitch (missions/assign) > team => T001
+killswitch (missions/assign) > mission => quadruped
+killswitch (missions/assign) > T001: assigned quadruped
+killswitch (missions/assign) > team => T002
+killswitch (missions/assign) > T002: waiting: no eligible free mission (capacity, enable status or prerequisites)
+killswitch (missions/assign) > [
+  {
+    "team": "T002",
+    "mission": "quadruped"
+  }
+]
+killswitch (missions/assign) > Using progress/complete. Type show options, set <option> <value>, then run.
+killswitch (progress/complete) > team => T001
+killswitch (progress/complete) > T001: completed quadruped; +200 points; total=300. Capacity released. Use assign or dispatch; no automatic follow-up.
+killswitch (progress/complete) > Using queue/dispatch. Type show options, set <option> <value>, then run.
+killswitch (queue/dispatch) > T002: assigned quadruped
+killswitch (queue/dispatch) > Using progress/complete. Type show options, set <option> <value>, then run.
+killswitch (progress/complete) > team => T002
+killswitch (progress/complete) > T002: completed quadruped; +200 points; total=300. Capacity released. Use assign or dispatch; no automatic follow-up.
+killswitch (progress/complete) > Using missions/assign. Type show options, set <option> <value>, then run.
+killswitch (missions/assign) > team => T001
+killswitch (missions/assign) > mission => humanoid
+killswitch (missions/assign) > T001: assigned humanoid
+killswitch (missions/assign) > Using progress/complete. Type show options, set <option> <value>, then run.
+killswitch (progress/complete) > team => T001
+killswitch (progress/complete) > T001: completed humanoid; +200 points; total=500. Capacity released. Use assign or dispatch; no automatic follow-up.
+killswitch (progress/complete) > Using missions/assign. Type show options, set <option> <value>, then run.
+killswitch (missions/assign) > team => T001
+killswitch (missions/assign) > mission => drones
+killswitch (missions/assign) > T001: assigned drones
+killswitch (missions/assign) > Using progress/complete. Type show options, set <option> <value>, then run.
+killswitch (progress/complete) > team => T001
+killswitch (progress/complete) > T001: completed drones; +200 points; total=700. Capacity released. Use assign or dispatch; no automatic follow-up.
+killswitch (progress/complete) > medical: 0/1 active
+vehicle: 0/1 active
+industrial_arm: 0/1 active
+elevator: 0/1 active
+plant: 0/1 active
+cctv: 0/1 active
+cpu_rings: 0/1 active
+blind_spot: 0/1 active
+through_walls: 0/1 active
+maze: 0/1 active
+killswitch (progress/complete) > Using missions/assign. Type show options, set <option> <value>, then run.
+killswitch (missions/assign) > team => T001
+killswitch (missions/assign) > mission => maze
+killswitch (missions/assign) > T001: assigned maze
+killswitch (missions/assign) > Using progress/complete. Type show options, set <option> <value>, then run.
+killswitch (progress/complete) > team => T001
+killswitch (progress/complete) > mission => maze
+killswitch (progress/complete) > T001: completed maze; +500 points; total=1200. Capacity released. Use assign or dispatch; no automatic follow-up.
+killswitch (progress/complete) > Kill Switch CTF | mode=controlled | min_main=3 | players=2 | teams=2
+T001 | يوسف منصور | active=- | completed=warehouse,quadruped,humanoid,drones,maze | score=1200
+T002 | Amina Haddad | active=- | completed=warehouse,quadruped | score=300
+Waiting: none
+killswitch (progress/complete) > 1. T001 1200 points
+2. T002 300 points
+killswitch (progress/complete) > [
+  {
+    "time": "2026-11-25T10:19:23.322525+00:00",
+    "actor": "organizer",
+    "action": "dispatch",
+    "detail": "FIFO waiting list; blocked requests do not block others"
+  },
+  {
+    "time": "2026-11-25T10:19:23.336191+00:00",
+    "actor": "organizer",
+    "action": "complete",
+    "detail": "team=T002; mission=quadruped"
+  },
+  {
+    "time": "2026-11-25T10:19:23.350487+00:00",
+    "actor": "organizer",
+    "action": "assign",
+    "detail": "team=T001; mission=humanoid"
+  },
+  {
+    "time": "2026-11-25T10:19:23.364915+00:00",
+    "actor": "organizer",
+    "action": "complete",
+    "detail": "team=T001; mission=humanoid"
+  },
+  {
+    "time": "2026-11-25T10:19:23.379067+00:00",
+    "actor": "organizer",
+    "action": "assign",
+    "detail": "team=T001; mission=drones"
+  },
+  {
+    "time": "2026-11-25T10:19:23.395469+00:00",
+    "actor": "organizer",
+    "action": "complete",
+    "detail": "team=T001; mission=drones"
+  },
+  {
+    "time": "2026-11-25T10:19:23.410185+00:00",
+    "actor": "organizer",
+    "action": "assign",
+    "detail": "team=T001; mission=maze"
+  },
+  {
+    "time": "2026-11-25T10:19:23.425104+00:00",
+    "actor": "organizer",
+    "action": "complete",
+    "detail": "team=T001; mission=maze"
+  }
+]
+killswitch (progress/complete) > Goodbye. Committed changes are saved.

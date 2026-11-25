@@ -1,0 +1,101 @@
+ACTUAL COMMAND: /opt/venv/bin/python3 /mnt/novix-k8s-workspace-root/session_879c352ec3a50efbd630158414a227d2/workspace/project/kill-switch-manager/killswitch.py --state /tmp/killswitch-demo-aer4yw15/walkthrough.json
+STDIN SOURCE: examples/walkthrough.txt
+EXIT CODE: 0
+
+State: /tmp/killswitch-demo-aer4yw15/walkthrough.json
+
+Kill Switch CTF | by Wassim Oukoudda | StyxSec × Oblivion
+2041 / ORACLE — LOCAL ORGANIZER ONLY; no labs or offensive actions.
+Try: show modules, use roster/import, show options, help run.
+One organizer process per state file. Changes auto-save.
+
+killswitch > roster/add — Organizer adds one player (unique case-sensitive ID).
+roster/import — Atomically import UTF-8 CSV with exact id,name header; organizer only.
+teams/create — Organizer forms random balanced teams or explicit controlled mapping. Formation is separate from mission assignment mode.
+missions/assign — Assign common warehouse first, then eligible free branches; random branches differ while occupied at capacity 1. Enqueue if blocked.
+progress/complete — Organizer verifies and records current mission completion, releases capacity and awards proposed default points.
+queue/dispatch — Retry waiting teams in FIFO order; skip blocked requests. Does not auto-enqueue idle teams.
+event/config — Change one scheduling setting; existing active allocations remain intact.
+resources/config — Configure capacity or enable state without invalidating active or explicitly queued allocations.
+event/status — Show roster/team progression, scores and waiting teams.
+event/leaderboard — Show descending total points, team ID breaks ties (not speed).
+event/reset — Erase event activity/roster/settings; retain current catalog/resource defaults. Previous state goes to .bak until next write.
+killswitch > Using roster/import. Type show options, set <option> <value>, then run.
+killswitch (roster/import) > path => examples/roster.csv
+killswitch (roster/import) > Roster imported and saved; 12 players total.
+killswitch (roster/import) > Using teams/create. Type show options, set <option> <value>, then run.
+killswitch (teams/create) > size => 3
+killswitch (teams/create) > seed => 42
+killswitch (teams/create) > Organizer forms random balanced teams or explicit controlled mapping. Formation is separate from mission assignment mode.
+size = 3 [int; required=False] — Random formation maximum team size; ceil(players/size) balanced teams. Ignored for controlled mapping.
+seed = 42 [int; required=False] — Random team formation seed; independent of event assignment seed.
+formation = 'random' [enum; required=False] — Random is normal rule; controlled is explicit organizer override, never player self-selection.
+mapping = '' [string; required=False] — Controlled only: T001=P01,P02;T002=P03,P04. All players exactly once. Quote whole value.
+confirm = '' [enum; required=False] — REGENERATE required if activity exists; deletes ALL teams' scores, completions, active assignments and queue. Roster/settings retained.
+killswitch (teams/create) > Formed 4 teams by organizer (random); size range 3–3.
+killswitch (teams/create) > Using missions/assign. Type show options, set <option> <value>, then run.
+killswitch (missions/assign) > T001: assigned warehouse
+T002: assigned warehouse
+T003: assigned warehouse
+T004: assigned warehouse
+killswitch (missions/assign) > Kill Switch CTF | mode=random | min_main=3 | players=12 | teams=4
+T001 | Lucía Rivera, Mei Lin, Inès Laurent | active=warehouse | completed=- | score=0
+T002 | ليلى سالم, Kenji Sato, Amina Haddad | active=warehouse | completed=- | score=0
+T003 | Zoë Martin, Maya Singh, يوسف منصور | active=warehouse | completed=- | score=0
+T004 | Sam Okafor, Noah Chen, Émile Dubois | active=warehouse | completed=- | score=0
+Waiting: none
+killswitch (missions/assign) > Using progress/complete. Type show options, set <option> <value>, then run.
+killswitch (progress/complete) > team => T001
+killswitch (progress/complete) > mission => warehouse
+killswitch (progress/complete) > T001: completed warehouse; +100 points; total=100. Capacity released. Use assign or dispatch; no automatic follow-up.
+killswitch (progress/complete) > team => T002
+killswitch (progress/complete) > T002: completed warehouse; +100 points; total=100. Capacity released. Use assign or dispatch; no automatic follow-up.
+killswitch (progress/complete) > team => T003
+killswitch (progress/complete) > T003: completed warehouse; +100 points; total=100. Capacity released. Use assign or dispatch; no automatic follow-up.
+killswitch (progress/complete) > team => T004
+killswitch (progress/complete) > T004: completed warehouse; +100 points; total=100. Capacity released. Use assign or dispatch; no automatic follow-up.
+killswitch (progress/complete) > Using missions/assign. Type show options, set <option> <value>, then run.
+killswitch (missions/assign) > T001: assigned elevator
+T002: assigned drones
+T003: assigned blind_spot
+T004: assigned vehicle
+killswitch (missions/assign) > Kill Switch CTF | mode=random | min_main=3 | players=12 | teams=4
+T001 | Lucía Rivera, Mei Lin, Inès Laurent | active=elevator | completed=warehouse | score=100
+T002 | ليلى سالم, Kenji Sato, Amina Haddad | active=drones | completed=warehouse | score=100
+T003 | Zoë Martin, Maya Singh, يوسف منصور | active=blind_spot | completed=warehouse | score=100
+T004 | Sam Okafor, Noah Chen, Émile Dubois | active=vehicle | completed=warehouse | score=100
+Waiting: none
+killswitch (missions/assign) > Using event/config. Type show options, set <option> <value>, then run.
+killswitch (event/config) > option => assignment_mode
+killswitch (event/config) > value => controlled
+killswitch (event/config) > assignment_mode=controlled. Existing active allocations unchanged.
+killswitch (event/config) > Using progress/complete. Type show options, set <option> <value>, then run.
+killswitch (progress/complete) > team => T001
+killswitch (progress/complete) > T001: completed elevator; +300 points; total=400. Capacity released. Use assign or dispatch; no automatic follow-up.
+killswitch (progress/complete) > Using resources/config. Type show options, set <option> <value>, then run.
+killswitch (resources/config) > mission => quadruped
+killswitch (resources/config) > capacity => 4
+killswitch (resources/config) > quadruped: capacity=4; enabled=True. Run dispatch to retry waiting teams.
+killswitch (resources/config) > Using missions/assign. Type show options, set <option> <value>, then run.
+killswitch (missions/assign) > team => T001
+killswitch (missions/assign) > mission => quadruped
+killswitch (missions/assign) > T001: assigned quadruped
+killswitch (missions/assign) > Kill Switch CTF | mode=controlled | min_main=3 | players=12 | teams=4
+T001 | Lucía Rivera, Mei Lin, Inès Laurent | active=quadruped | completed=warehouse,elevator | score=400
+T002 | ليلى سالم, Kenji Sato, Amina Haddad | active=drones | completed=warehouse | score=100
+T003 | Zoë Martin, Maya Singh, يوسف منصور | active=blind_spot | completed=warehouse | score=100
+T004 | Sam Okafor, Noah Chen, Émile Dubois | active=vehicle | completed=warehouse | score=100
+Waiting: none
+killswitch (missions/assign) > 1. T001 400 points
+2. T002 100 points
+3. T003 100 points
+4. T004 100 points
+killswitch (missions/assign) > {
+  "assignment_mode": "controlled",
+  "seed": 2041,
+  "draw": 8,
+  "min_main": 3
+}
+killswitch (missions/assign) > State saved atomically; previous state in .bak.
+killswitch (missions/assign) > State reloaded and validated.
+killswitch (missions/assign) > killswitch > Goodbye. Committed changes are saved.

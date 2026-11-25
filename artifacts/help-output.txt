@@ -1,0 +1,11 @@
+usage: killswitch.py [-h] [--state STATE] [--catalog CATALOG]
+
+Kill Switch CTF — local organizer console; no lab execution. Python 3.9+;
+stdlib only.
+
+options:
+  -h, --help         show this help message and exit
+  --state STATE      Local JSON state path; created if absent. Default: beside
+                     killswitch.py/event-state.json
+  --catalog CATALOG  Validated catalog JSON for a NEW state only; otherwise
+                     catalog.json beside script.

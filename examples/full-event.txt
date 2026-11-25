@@ -1,0 +1,72 @@
+use roster/add
+set id P01
+set name "Amina Haddad"
+run
+set id P02
+set name "يوسف منصور"
+run
+use teams/create
+set size 1
+set seed 42
+run
+use resources/config
+set mission warehouse
+set capacity 1
+run
+use missions/assign
+run
+show queue
+use progress/complete
+set team T001
+run
+use queue/dispatch
+run
+use progress/complete
+set team T002
+run
+use event/config
+set option assignment_mode
+set value controlled
+run
+use missions/assign
+set team T001
+set mission quadruped
+run
+set team T002
+run
+show queue
+use progress/complete
+set team T001
+run
+use queue/dispatch
+run
+use progress/complete
+set team T002
+run
+use missions/assign
+set team T001
+set mission humanoid
+run
+use progress/complete
+set team T001
+run
+use missions/assign
+set team T001
+set mission drones
+run
+use progress/complete
+set team T001
+run
+eligible T001
+use missions/assign
+set team T001
+set mission maze
+run
+use progress/complete
+set team T001
+set mission maze
+run
+status
+leaderboard
+audit 8
+exit
